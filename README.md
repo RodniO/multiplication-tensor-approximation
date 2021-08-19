@@ -5,7 +5,7 @@ This repository contains a Fortran code for the approximation of small n^2 x m^2
 
 Algorithm was checked to work on all sizes, such that nmk <= 27, without changing any parameters.
 
-Algorithm code is in incfiles/ExampleA.f90 and incfiles/ExampleTEN.f90.
+Algorithm code is in incfiles/ExampleTEN.f90.
 
 The main program is Main.f90. By default, it will do a single try for 9x9x9 tensor.
 
