@@ -1,0 +1,75 @@
+#!/usr/bin/gnuplot -persist
+#In terminal write: сat tensors.graph | gnuplot
+#Data for convergence from 'graphout'. 1: step, 2: error, 3: alpha, 4: number of fixed elements
+set encoding koi8r
+set term pngcairo size 1366,768
+
+set output "Tensors.png"
+set multiplot
+set size 0.25/1.5, 1.0
+unset title
+set autoscale
+set xrange [1:100]
+set yrange [0.0000001:10]
+unset logscale
+set logscale y
+set xtics 50
+set ylabel "" font "Helvetica,24"
+set xlabel " " font "Helvetica,24"
+set key font 'Helvetica,19'
+set key right
+set key top
+set format y "10^{%T}"
+set xtics font 'Helvetica,17'
+set ytics font 'Helvetica,17'
+set key spacing 1.4
+set ytics offset 0.5
+set ylabel offset 0.5
+set ytics nomirror
+#set noytics
+
+set rmargin 0
+plot "graphout" using 1:2 title "" with lines lw 4 lc 1
+
+set origin 0.25/1.5, 0
+set size 0.2/1.5, 1.0
+set xrange [100.01:1190]
+set xlabel " "
+set rmargin
+set lmargin 0
+set rmargin 0
+unset ylabel
+set noytics
+set xtics 1000
+plot "graphout" using 1:2 title "" with lines lw 4 lc 1
+
+set origin 0.45/1.5, 0
+set size 0.8/1.5, 1.0
+set xrange [1190:22400]
+unset logscale
+set logscale y
+set xlabel "Steps"
+set rmargin
+set lmargin 0
+set rmargin 0
+unset ylabel
+set noytics
+set xtics 5000
+plot "graphout" using 1:2 title "" with lines lw 4 lc 1
+
+set origin 1.25/1.5, 0
+set size 0.25/1.5, 1.0
+set xrange [22400:100000]
+#set logscale x
+set xlabel " "
+set lmargin 0
+set rmargin 5
+unset ylabel
+unset ytics
+set xtics 50000
+set y2tics nomirror
+set format y2 ''
+plot "graphout" using 1:2 title "Error" with lines lw 4 lc 1
+
+unset multiplot
+
